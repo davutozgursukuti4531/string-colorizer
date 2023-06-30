@@ -1,0 +1,46 @@
+{
+  "name": "string-colorizer",
+  "version": "1.0.0",
+  "description": "Basic, Convenient and Optimized, an ansi-based string colorizer.",
+  "main": "./src/dist/index.js",
+  "types": "./src/typings/index.d.ts",
+  "exports": {
+    "import": "./src/dist/index.js",
+    "require": "./src/build/index.js",
+    "types": "./src/typings/index.d.ts"
+  },
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/davutozgursukuti4531/string-colorizer.git"
+  },
+  "keywords": [
+    "string",
+    "symbol",
+    "number",
+    "color",
+    "chalk",
+    "colorette",
+    "string",
+    "colorizer",
+    "string colorizer",
+    "javascript",
+    "terminal",
+    "AnsiColorization",
+    "ansi"
+  ],
+  "author": "Davut Özgür Süküti",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/davutozgursukuti4531/string-colorizer/issues"
+  },
+  "homepage": "https://github.com/davutozgursukuti4531/string-colorizer#readme",
+  "devDependencies": {
+    "@babel/cli": "^7.22.5",
+    "@babel/core": "^7.22.5",
+    "@babel/plugin-transform-modules-commonjs": "^7.22.5"
+  }
+}
