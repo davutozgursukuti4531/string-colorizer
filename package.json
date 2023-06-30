@@ -1,6 +1,6 @@
 {
   "name": "string-colorizer",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Basic, Convenient and Optimized, an ansi-based string colorizer.",
   "main": "./src/dist/index.js",
   "types": "./src/typings/index.d.ts",
