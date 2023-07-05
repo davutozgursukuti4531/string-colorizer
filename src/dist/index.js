@@ -50,16 +50,24 @@ const someBackgroundRGBColors = {
  * @param {object} list 
  */
 function colorGenerator(obj, list){
-    Object.getOwnPropertyNames(list).forEach((v) => {
-        Object.defineProperty(obj, v, { value: function(text){
-            return list[v] + text + "\x1b[0m"
-        } })
-    })
+    for(const v of Object.getOwnPropertyNames(list)){
+        Object.defineProperty(obj, v, { 
+            value: function(text){
+                return list[v] + text + "\x1b[0m"
+            },
+            configurable: false,
+            writable: false 
+        })
+    }
 }
 function ansiCodeGenerator(obj, list){
-    Object.getOwnPropertyNames(list).forEach((v) => {
-        Object.defineProperty(obj, v, { value: list[v] })
-    })
+    for(const v of Object.getOwnPropertyNames(list)){
+        Object.defineProperty(obj, v, { 
+            value: list[v],
+            configurable: false,
+            writable: false  
+        })
+    }
 }
 /**
  * 
@@ -68,18 +76,22 @@ function ansiCodeGenerator(obj, list){
  * @param {object} list 
  */
 function RGBcolorGenerator(obj, background, list){
-    Object.getOwnPropertyNames(list).forEach((v) => {
-        Object.defineProperty(obj, v, { value: function(text){
-            return `\x1b[${background === true ? 48 : 38};2;${list[v][0]};${list[v][1]};${list[v][2]}m` + text + "\x1b[0m"
-        } })
-    })
+    for(const v of Object.getOwnPropertyNames(list)){
+        Object.defineProperty(obj, v, { 
+            value: function(text){
+                return `\x1b[${background === true ? 48 : 38};2;${list[v][0]};${list[v][1]};${list[v][2]}m` + text + "\x1b[0m"
+            },
+            configurable: false,
+            writable: false 
+        })
+    }
 }
 
 class Colorizer {
     constructor(){
-        colorGenerator(this["foregroundColors"], foregroundColors)
-        colorGenerator(this["backgroundColors"], backgroundColors)
-        colorGenerator(this["styles"], styles)
+        colorGenerator(this.foregroundColors, foregroundColors)
+        colorGenerator(this.backgroundColors, backgroundColors)
+        colorGenerator(this.styles, styles)
         ansiCodeGenerator(this.ansiCodes.foreground, foregroundColors)
         ansiCodeGenerator(this.ansiCodes.background, backgroundColors)
         ansiCodeGenerator(this.ansiCodes.styles, styles)

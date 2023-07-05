@@ -1,12 +1,12 @@
 {
   "name": "string-colorizer",
-  "version": "1.0.1",
+  "version": "1.0.3",
   "description": "Basic, Convenient and Optimized, an ansi-based string colorizer.",
   "main": "./src/dist/index.js",
   "types": "./src/typings/index.d.ts",
   "exports": {
     "import": "./src/dist/index.js",
-    "require": "./src/build/index.js",
+    "require": "./src/build/index.cjs",
     "types": "./src/typings/index.d.ts"
   },
   "type": "module",
