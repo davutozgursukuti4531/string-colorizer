@@ -23,11 +23,11 @@ declare module "string-colorizer"{
         /**
          * You add a color to the customColors object
          */
-        public addCustomRGBColors(name: string, background: boolean, rgb: [red: number, green: number, blue: number]): void
+        public addCustomRGBColor(name: string, background: boolean, rgb: [red: number, green: number, blue: number]): void
         /**
          * You add a color to the customColors object
          */
-        public addCustomHexColors(name: string, background: boolean, hexCode: string): void
+        public addCustomHexColor(name: string, background: boolean, hexCode: string): void
         /**
          * you check if the specified hex code is valid.
          */

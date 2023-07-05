@@ -114,10 +114,10 @@ class Colorizer {
      * @param {Array<number>} rgb
      */
     addCustomRGBColor(name, background, rgb){
-        Object.defineProperty(this.ansiCodes.custom, name, { value: function(text){
+        Object.defineProperty(this.customColors, name, { value: function(text){
             return `\x1b[${background === true ? 48 : 38};2;${rgb[0]};${rgb[1]};${rgb[2]}m` + text + "\x1b[0m"
-        } })
-        Object.defineProperty(this.ansiCodes.custom, name, { value: `\x1b[${background === true ? 48 : 38};2;${rgb[0]};${rgb[1]};${rgb[2]}m` })
+        }, configurable: false, writable: false  })
+        Object.defineProperty(this.ansiCodes.custom, name, { value: `\x1b[${background === true ? 48 : 38};2;${rgb[0]};${rgb[1]};${rgb[2]}m`, configurable: false, writable: false })
     }
     /**
      * 
