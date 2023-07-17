@@ -3,7 +3,7 @@ declare module "string-colorizer"{
         public backgroundColors: Colors;
         public foregroundColors: Colors;
         public customColors: {
-            [key in CC[keyof CC]]: (text: string) => string; 
+            [key in CC[keyof CC]]: (...text: unknown[]) => string; 
         };
         public styles: Styles
         public ansiCodes: {
@@ -23,10 +23,12 @@ declare module "string-colorizer"{
         /**
          * You add a color to the customColors object
          */
+        public addCustomRGBColor<K extends keyof typeof this.customColors>(name: K, background: boolean, rgb: [red: number, green: number, blue: number]): void
         public addCustomRGBColor(name: string, background: boolean, rgb: [red: number, green: number, blue: number]): void
         /**
          * You add a color to the customColors object
          */
+        public addCustomHexColor<K extends keyof typeof this.customColors>(name: K, background: boolean, hexCode: string): void
         public addCustomHexColor(name: string, background: boolean, hexCode: string): void
         /**
          * you check if the specified hex code is valid.
@@ -41,89 +43,89 @@ declare module "string-colorizer"{
         /**
          * makes the color of the specified string black
          */
-        black: (text: string) => string;
+        black: (...text: unknown[]) => string;
         /**
          * makes the color of the specified string red
          */
-        red: (text: string) => string;
+        red: (...text: unknown[]) => string;
         /**
          * makes the color of the specified string green
          */
-        green: (text: string) => string;
+        green: (...text: unknown[]) => string;
         /**
          * makes the color of the specified string yellow
          */
-        yellow: (text: string) => string;
+        yellow: (...text: unknown[]) => string;
         /**
          * makes the color of the specified string blue
          */
-        blue: (text: string) => string;
+        blue: (...text: unknown[]) => string;
         /**
          * makes the color of the specified string magenta
          */
-        magenta: (text: string) => string;
+        magenta: (...text: unknown[]) => string;
         /**
          * makes the color of the specified string cyan
          */
-        cyan: (text: string) => string;
+        cyan: (...text: unknown[]) => string;
         /**
          * makes the color of the specified string white
          */
-        white: (text: string) => string;
+        white: (...text: unknown[]) => string;
         /**
          * makes the color of the specified string gray
          */
-        gray: (text: string) => string;
+        gray: (...text: unknown[]) => string;
         /**
          * makes the color of the specified string crimson
          */
-        crimson: (text: string) => string;
+        crimson: (...text: unknown[]) => string;
         /**
          * makes the color of the specified string purple
          */
-        purple: (text: string) => string;
+        purple: (...text: unknown[]) => string;
         /**
          * makes the color of the specified string orange
          */
-        orange: (text: string) => string;
+        orange: (...text: unknown[]) => string;
     }
     export interface Styles{
         /**
          * resets the color and style of the string you specify
          */
-        reset: (text: string) => string;
+        reset: (...text: unknown[]) => string;
         /**
          * brightens the characters in the string you specify
          */
-        bright: (text: string) => string;
+        bright: (...text: unknown[]) => string;
         /**
          * dims the characters in the string you specify
          */
-        dim: (text: string) => string;
+        dim: (...text: unknown[]) => string;
         /**
          * italicizes the characters in the string you specify
          */
-        italic: (text: string) => string;
+        italic: (...text: unknown[]) => string;
         /**
          * underscores the characters in the string you specify
          */
-        underScore: (text: string) => string;
+        underScore: (...text: unknown[]) => string;
         /**
          * blinks the characters in the string you specify
          */
-        blink: (text: string) => string;
+        blink: (...text: unknown[]) => string;
         /**
          * reverses the foreground and background colors in the string you specify
          */
-        reverse: (text: string) => string;
+        reverse: (...text: unknown[]) => string;
         /**
          * makes the characters in the string you specify invisible
          */
-        hidden: (text: string) => string;
+        hidden: (...text: unknown[]) => string;
         /**
          * strikeThrough the characters in the string you specify
          */
-        strikeThrough: (text: string) => string;
+        strikeThrough: (...text: unknown[]) => string;
     }
     export default Colorizer
 }

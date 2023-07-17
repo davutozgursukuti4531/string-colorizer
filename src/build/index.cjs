@@ -3,7 +3,6 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.default = void 0;
 var _isValidHex = _interopRequireDefault(require("./Utils/isValidHex.cjs"));
 var _isColored = _interopRequireDefault(require("./Utils/isColored.cjs"));
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -58,8 +57,8 @@ const someBackgroundRGBColors = {
 function colorGenerator(obj, list) {
   for (const v of Object.getOwnPropertyNames(list)) {
     Object.defineProperty(obj, v, {
-      value: function (text) {
-        return list[v] + text + "\x1b[0m";
+      value: function (...text) {
+        return list[v] + String([...text]).replace(",", " ") + "\x1b[0m";
       },
       configurable: false,
       writable: false
@@ -84,8 +83,8 @@ function ansiCodeGenerator(obj, list) {
 function RGBcolorGenerator(obj, background, list) {
   for (const v of Object.getOwnPropertyNames(list)) {
     Object.defineProperty(obj, v, {
-      value: function (text) {
-        return `\x1b[${background === true ? 48 : 38};2;${list[v][0]};${list[v][1]};${list[v][2]}m` + text + "\x1b[0m";
+      value: function (...text) {
+        return `\x1b[${background === true ? 48 : 38};2;${list[v][0]};${list[v][1]};${list[v][2]}m` + String([...text]).replace(",", " ") + "\x1b[0m";
       },
       configurable: false,
       writable: false
@@ -120,8 +119,8 @@ class Colorizer {
    */
   addCustomRGBColor(name, background, rgb) {
     Object.defineProperty(this.customColors, name, {
-      value: function (text) {
-        return `\x1b[${background === true ? 48 : 38};2;${rgb[0]};${rgb[1]};${rgb[2]}m` + text + "\x1b[0m";
+      value: function (...text) {
+        return `\x1b[${background === true ? 48 : 38};2;${rgb[0]};${rgb[1]};${rgb[2]}m` + String([...text]).replace(",", " ") + "\x1b[0m";
       },
       configurable: false,
       writable: false
@@ -150,19 +149,13 @@ class Colorizer {
       green = parseInt(hexCode.substring(2, 4), 16);
       blue = parseInt(hexCode.substring(4, 6), 16);
     } else {
-      red = parseInt(hexCode.substring(0, 1) + hexCode.substring(0, 1), 16);
-      green = parseInt(hexCode.substring(1, 2) + hexCode.substring(1, 2), 16);
-      blue = parseInt(hexCode.substring(2, 3) + hexCode.substring(2, 3), 16);
+      red = parseInt(hexCode[0].repeat(2), 16);
+      green = parseInt(hexCode[1].repeat(2), 16);
+      blue = parseInt(hexCode[2].repeat(2), 16);
     }
     this.addCustomRGBColor(name, background, [red, green, blue]);
     return;
   }
-  /**
-   * 
-   * @param {string} hexCode 
-   * @param  {string} text 
-   * @returns 
-   */
   isValidHex = _isValidHex.default;
   isColored = _isColored.default;
 }

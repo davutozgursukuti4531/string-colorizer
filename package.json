@@ -1,8 +1,9 @@
 {
   "name": "string-colorizer",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Basic, Convenient and Optimized, an ansi-based string colorizer.",
-  "main": "./src/dist/index.js",
+  "main": "./src/build/index.cjs",
+  "module": "./src/dist/index.js",
   "types": "./src/typings/index.d.ts",
   "exports": {
     "import": "./src/dist/index.js",
@@ -30,7 +31,10 @@
     "javascript",
     "terminal",
     "AnsiColorization",
-    "ansi"
+    "ansi",
+    "hex",
+    "rgb",
+    "red green blue"
   ],
   "author": "Davut Özgür Süküti",
   "license": "MIT",
@@ -41,6 +45,7 @@
   "devDependencies": {
     "@babel/cli": "^7.22.5",
     "@babel/core": "^7.22.6",
+    "@babel/plugin-syntax-import-attributes": "^7.22.5",
     "@babel/plugin-transform-modules-commonjs": "^7.22.5"
   }
 }
